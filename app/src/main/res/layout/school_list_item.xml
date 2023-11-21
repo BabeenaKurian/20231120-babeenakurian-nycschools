@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.schoolsnyc.a20231120_babeenakurian_nycschools.ui.school.adapter.SchoolViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_school_Item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_schoolName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{viewModel.schoolName}"
+            android:textColor="@color/teal"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="School Name" />
+
+        <ImageView
+            android:id="@+id/iv_studentsIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="280dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_schoolName"
+            app:srcCompat="@drawable/ic_students"
+            app:tint="@color/dark_grey" />
+
+        <TextView
+            android:id="@+id/tv_totalStudentsCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/dark_grey"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="2dp"
+            android:paddingRight="16dp"
+            android:text='@{viewModel.totalStudents + " students"}'
+            app:layout_constraintBottom_toBottomOf="@+id/iv_studentsIcon"
+            app:layout_constraintStart_toEndOf="@+id/iv_studentsIcon"
+            tools:text="213 students" />
+
+        <ImageView
+            android:id="@+id/iv_addressIcon"
+            android:layout_width="25dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_schoolName"
+            app:srcCompat="@drawable/ic_location"
+            app:tint="@color/dark_grey" />
+
+        <TextView
+            android:id="@+id/tv_AddressLine1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="2dp"
+            android:textColor="@color/dark_grey"
+            android:text="@{viewModel.primaryAddressLine1}"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_addressIcon"
+            app:layout_constraintStart_toEndOf="@+id/iv_addressIcon"
+            tools:text="213 Hatfield Dr" />
+
+        <TextView
+            android:id="@+id/tv_addressLine2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/dark_grey"
+            android:text='@{viewModel.city + ", " + viewModel.stateCode + " - " + viewModel.zip}'
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_AddressLine1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_AddressLine1"
+            tools:text="Franklin, TN - 37064" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

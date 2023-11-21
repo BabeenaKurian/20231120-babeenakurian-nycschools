@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">NYC Schools</string>
+    <string name="app_header">NYC SCHOOL\'S INFO HUB</string>
+    <string name="address_label">Address</string>
+    <string name="sat_results_label">SAT Results</string>
+    <string name="sat_results_unavailable">SAT Results not Available</string>
+    <string name="students_number">Attended</string>
+</resources>
