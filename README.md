@@ -1,6 +1,6 @@
  **Analysis of requirement and understanding**
 
-It’s a comprehensive set of requirements! Creating a native app for NYC High School information sounds intriguing. Let's break it down step by step.
+Creating a native app for NYC High School information sounds intriguing. Let's break it down step by step.
 
 Firstly, we'll need to retrieve and display the list of NYC High Schools from the provided data source: DOE High School Directory 2017.
 
