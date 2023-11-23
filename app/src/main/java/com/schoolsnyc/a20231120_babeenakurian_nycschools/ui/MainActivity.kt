@@ -6,6 +6,7 @@ import android.widget.SearchView.OnQueryTextListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.paging.PagedList
 import androidx.paging.PagedListAdapter
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.schoolsnyc.a20231120_babeenakurian_nycschools.R
+import com.schoolsnyc.a20231120_babeenakurian_nycschools.databinding.ActivityMainBinding
 import com.schoolsnyc.a20231120_babeenakurian_nycschools.models.SchoolDetails
 import com.schoolsnyc.a20231120_babeenakurian_nycschools.ui.school.SchoolListViewModel
 import com.schoolsnyc.a20231120_babeenakurian_nycschools.ui.school.adapter.SchoolListPagedAdapter
@@ -24,7 +26,8 @@ class MainActivity : AppCompatActivity() {
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        recyclerView = findViewById(R.id.recyclerView)
+        var binding: ActivityMainBinding = DataBindingUtil.setContentView(this,R.layout.activity_main)
+        recyclerView = binding.recyclerView
         mViewModel = ViewModelProviders.of(this).get(SchoolListViewModel::class.java)
         val mrecyclerView=recyclerView
         // Setup recycler view

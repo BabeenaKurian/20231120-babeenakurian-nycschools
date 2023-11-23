@@ -37,12 +37,14 @@ class SchoolDetailsFragment : DialogFragment() {
             binding!!.schoolDetails = schoolDetails
             mViewModel!!.getSatScore(schoolDetails!!.dbn)?.observe(this) { satScores: SatScores? ->
                 if (satScores == null) {
-                    //binding!!.satBodyCL.visibility = View.GONE
-                  //  binding!!.satNoResultBodyCL.visibility = View.VISIBLE
+                    binding!!.clSatBody.visibility = View.GONE
+                    binding!!.clSatNoResultBody.visibility = View.VISIBLE
+                    binding!!.tvSatTestTakers.visibility=View.GONE
+                    binding!!.tvTestTakerLabel.visibility=View.GONE
                 } else {
                     binding!!.satScores = satScores
-                   // binding!!.satBodyCL.visibility = View.VISIBLE
-                   // binding!!.satNoResultBodyCL.visibility = View.GONE
+                    binding!!.clSatBody.visibility = View.VISIBLE
+                    binding!!.clSatNoResultBody.visibility = View.GONE
                 }
             }
             binding!!.llPhoneButton.setOnClickListener { v: View? ->
