@@ -14,7 +14,6 @@ import javax.inject.Singleton
 @Component(modules = [AppModule::class])
 interface AppComponent {
     fun inject(application: NYCApplication?)
-    fun inject(apiDataSourceFactory: ApiDataSourceFactory?)
     fun inject(schoolListViewModel: SchoolListViewModel?)
     fun inject(schoolViewModel: SchoolViewModel?)
     fun inject(schoolDetailsViewModel: SchoolDetailsViewModel?)

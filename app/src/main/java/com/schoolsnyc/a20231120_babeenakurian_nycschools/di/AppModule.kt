@@ -16,54 +16,23 @@ import javax.inject.Singleton
 
 @Module
 class AppModule {
-    @Provides
-    fun provideInterceptor(): HttpLoggingInterceptor {
-        return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-    }
 
+   //we can have separate class for creating retrofit object and that can be injected and passed to provideWebService fun
     @Provides
-    fun provideHttpClient(interceptor: HttpLoggingInterceptor?): OkHttpClient {
-        return OkHttpClient.Builder().addInterceptor(interceptor).build()
-    }
-
-    @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient?): Retrofit {
+   @Singleton
+    fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 
     @Provides
+    @Singleton
     fun provideWebService(retrofit: Retrofit): WebService {
         return retrofit.create(WebService::class.java)
     }
 
-    @Provides
-    fun provideErrorUtils(retrofit: Retrofit?): ErrorUtils {
-        return ErrorUtils(retrofit)
-    }
-
-    @Provides
-    fun provideDataSource(webService: WebService?, errorUtils: ErrorUtils?): ApiDataSource {
-        return ApiDataSource(webService!!, errorUtils!!)
-    }
-
-    @Provides
-    @Singleton
-    fun provideDataSourceFactory(apiDataSource: ApiDataSource): ApiDataSourceFactory {
-        return ApiDataSourceFactory(apiDataSource)
-    }
-
-    @Provides
-    fun provideRepository(
-        webService: WebService?,
-        errorUtils: ErrorUtils?,
-        dataSourceFactory: ApiDataSourceFactory?
-    ): AppRepository {
-        return AppRepository(webService!!, errorUtils!!, dataSourceFactory!!)
-    }
 
     companion object {
         private const val BASE_URL = "https://data.cityofnewyork.us/"
